@@ -1,4 +1,4 @@
-CTARGETS=test_micro test_throughput test_split_throughput test_adversarial test_splinter_lltable_throughput test_splinter_parallel test_parallel# test_fill_varied_throughput test_near_full test_deletions test_merge test_hash_accesses test_bulk test_whitelist test_resize test_micro_throughput test_micro_write test_micro_read test_lltable_throughput
+CTARGETS=unit_test test_micro test_throughput test_split_throughput test_adversarial test_splinter_lltable_throughput test_splinter_parallel test_parallel# test_fill_varied_throughput test_near_full test_deletions test_merge test_hash_accesses test_bulk test_whitelist test_resize test_micro_throughput test_micro_write test_micro_read test_lltable_throughput
 CXXTARGETS=test_ext_throughput test_ext_inc_throughput test_zipf_throughput test_ext_churn taf
 SPLTARGETS=test_splinter_ops test_splinter_inserts test_splinter_inserts_2 test_splinter_throughput test_splinter_zipfian_histogram test_splinter_adversarial
 # test_progress
@@ -53,6 +53,10 @@ test_unit:								$(OBJDIR)/test_unit.o $(OBJDIR)/gqf.o $(OBJDIR)/gqf_file.o \
 
 test_throughput:						$(OBJDIR)/test_throughput.o $(OBJDIR)/gqf.o $(OBJDIR)/gqf_file.o \
 										$(OBJDIR)/hashutil.o $(OBJDIR)/splinter_util.o $(OBJDIR)/test_driver.o \
+										$(OBJDIR)/partitioned_counter.o $(OBJDIR)/ll_table.o $(OBJDIR)/rand_util.o
+
+unit_test:						$(OBJDIR)/unit_test.o $(OBJDIR)/gqf.o $(OBJDIR)/gqf_file.o \
+										$(OBJDIR)/hashutil.o $(OBJDIR)/splinter_util.o \
 										$(OBJDIR)/partitioned_counter.o $(OBJDIR)/ll_table.o $(OBJDIR)/rand_util.o
 
 test_split_throughput:						$(OBJDIR)/test_split_throughput.o $(OBJDIR)/gqf.o $(OBJDIR)/gqf_file.o \

@@ -88,6 +88,7 @@ int qf_splinter_insert_split(QF *qf, splinterdb *db, splinterdb *bm, uint64_t ke
 		return 0;
 	}
 	else {
+		result.minirun_id <<= 64 - qf->metadata->quotient_remainder_bits;
 		if (db_insert(db, &key, sizeof(key), &val, sizeof(val), 0, 0)) return 0;
 		assert(result.minirun_id == key % (1 << (qf->metadata->quotient_bits + qf->metadata->bits_per_slot)));
 		assert(sizeof(result.minirun_id) <= MAX_KEY_SIZE);
